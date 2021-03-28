@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    function showAlert(){
+      alert("Please Choose File")
+    }
+  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/upload.css' %}">
+    <title>Change Picture</title>
+</head>
+{% if flag == "fail" %}
+<body onload="showAlert()">
+{% endif %}
+<body>
+  
+    <!-- <form method="POST" enctype="multipart/form-data" >
+        {% csrf_token %}
+        {{form.demail}}</br>
+        {{form.filename}}</br>
+        {{form.files}}</br>
+        <input type="submit" value="submit">
+    </form> -->
+    <form action method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1><strong>File upload</strong> Upload Your Files with IDRIVE</h1>
+        
+        <div class="form-group">
+          <label for="filename">Username</label>
+          <input type="text" name="filename"  class="form-controll" value="{{request.user.username}}" readonly>
+        </div>
+        
+        <div class="form-group file-area">
+            {{form.image}}
+        </div>
+        
+        <div class="form-group">
+          <button type="submit">Update Picture</button>
+        </div>
+        
+      </form>
+      <link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700' rel='stylesheet' type='text/css'>
+      
+</body>
+</html>

@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    function phonenumber(inputtxt)
+    {
+      var phoneno = /^\d{10}$/;
+      if(inputtxt.value.match(phoneno))
+      {
+          return true;
+      }
+      else
+      {
+        alert("Not a valid Phone Number");
+        return false;
+      }
+    }
+
+    function showAlert(){
+      alert("Enter the correct Data")
+    }
+  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/regstyle.css' %}" >
+     <!--========== BOX ICONS ==========-->  
+     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+     <!--========== CSS ==========-->
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Register Yourself!</title>
+</head>
+{% if flag == "fail" %}
+<body onload="showAlert()">
+{% endif %}
+<body>
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+        <img class="responsive-img" style="width: 100px;" src="{% static 'files/logo.gif' %}" />
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="profile" class="nav__link">Back</a></li>
+                <li class="nav__item"><a href="logout" class="nav__link">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-grid-alt'></i>
+        </div>
+    </nav>
+</header>
+</br>
+</br>
+</br>
+        <form method="POST" id="form1" >
+            {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-25">
+                  <label for="fname">Username</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="username" value="{{request.user.username}}" readonly>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">First Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="first_name" value="{{request.user.first_name}}">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Last Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="last_name" value="{{request.user.last_name}}">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="email"></label>Email</label>
+                </div>
+                <div class="col-75">
+                  <input type="email" id="email"  name="email" value="{{request.user.email}}" readonly>
+                </div>
+              </div>
+              <input type="hidden" id="temail"  name="temail" >
+              <div class="row">
+                <div class="col-25">
+                  <label for="mobile_number">Mobile Number</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="mobile_number" value="{{user.mobile_number}}">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="gender">Gender</label>
+                </div>
+                <div class="col-75">
+                  <select  name="gender">
+                    {% if user.gender == "Male" %}
+                    <option value="Male" selected>Male</option>
+                    {% else %}
+                    <option value="Male">Male</option>
+                    {% endif %}
+                    {% if user.gender == "Female" %}
+                    <option value="Female" selected>Female</option>
+                    {% else %}
+                    <option value="Female">Female</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div></br>
+                <input type="submit" value="Update!" onsubmit="phonenumber(document.form1.mobile_number)">
+              </div>
+            </form>
+          </div>
+    </form>
+     <!--========== SCROLL REVEAL ==========-->
+     <script src="https://unpkg.com/scrollreveal"></script>
+
+     <!--========== MAIN JS ==========-->
+     <script src="{% static 'files/main.js' %}"></script>
+</body>
+</html>

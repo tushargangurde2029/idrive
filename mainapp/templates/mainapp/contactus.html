@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Contact V20</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+    
+        <!--========== BOX ICONS ==========-->  
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <img class="responsive-img" style="width: 100px;" src="{% static 'files/logo.gif' %}" />
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="/" >Home</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
+        </nav>
+    </header>
+</br></br></br>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<span class="contact100-form-symbol">
+				<img src="{% static 'files/symbol-01.png' %}" alt="SYMBOL-MAIL">
+			</span>
+
+			<form class="contact100-form validate-form flex-sb flex-w" method="POST">
+                {% csrf_token %}
+				<span class="contact100-form-title">
+					Drop Us A Message
+				</span>
+
+				<div class="wrap-input100 rs1 validate-input" data-validate = "Name is required">
+					<input class="input100" type="text" name="name" placeholder="Name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 rs1 validate-input" data-validate = "Email is required: e@a.z">
+					<input class="input100" type="text" name="email" placeholder="Email Address">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+					<textarea class="input100" name="message" placeholder="Write Us A Message"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="container-contact100-form-btn">
+					<button type="submit" class="contact100-form-btn">
+						Send
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

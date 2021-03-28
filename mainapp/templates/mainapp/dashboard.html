@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+         a.another:link, a.another:visited {
+            background-color: #f44336;
+            color: white;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a.another:hover, a.another:active {
+            background-color: red;
+        }
+        a.download1:link, a.download1:visited {
+            background-color: white;
+            color: black;
+            border: 2px solid green;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a.download1:hover, a.download1:active {
+            background-color: green;
+            color: white;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dash.css' %}" >
+    <!--========== BOX ICONS ==========-->  
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!--========== CSS ==========-->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <img class="responsive-img" style="width: 100px;" src="{% static 'files/logo.gif' %}" />
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="upload" class="nav__link">Upload File</a></li>
+                    <li class="nav__item"><a href="profile" class="nav__link">Profile</a></li>
+                    <li class="nav__item"><a href="logout" class="nav__link">Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
+        </nav>
+    </header>
+</br>
+</br>
+</br>
+    <div class="name">
+        Hello {{request.user.first_name}} {{request.user.last_name}}
+    </div>
+    <!-- <table>
+        <tr>
+            <th>Email</th>
+            <th>Filename</th>
+            <th>File</th>
+        </tr>
+        {% for i in fdata %}
+        <tr>
+            <td>{{i.demail}}</td>
+            <td>{{i.filename}}</td>
+            <td>{{i.files}}</td>  
+            <td><a href="{{i.files.url}}" download="{{i.files}}">Download</a></td>
+        </tr>
+        {% endfor %}
+    </table> -->
+        
+    <div class="wrapper">
+        <div class="header">Your Uploaded Files        
+            <form style="float:right" method="POST">
+                {% csrf_token %}
+                <input type="text" name="search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div class="cards_wrap">
+            {% for i in fdata %}
+            <div class="card_item">
+                <div class="card_inner">
+                    {% if i.ext == "audio" %}
+                        <img src="{% static 'files/audio.png' %}">
+                    {% endif %}
+                    {% if i.ext == "nothing" %}
+                        <img src="{% static 'files/unknown.png' %}">
+                    {% endif %}
+                    {% if i.ext == "zip" %}
+                        <img src="{% static 'files/zip.svg' %}">
+                    {% endif %}
+                    {% if i.ext == "execute" %}
+                        <img src="{% static 'files/execute.png' %}">
+                    {% endif %}
+                    {% if i.ext == "image" %}
+                        <img src="{% static 'files/image.png' %}">
+                    {% endif %}
+                    {% if i.ext == "present" %}
+                        <img src="{% static 'files/ppt.jpg' %}">
+                    {% endif %}
+                    {% if i.ext == "excel" %}
+                        <img src="{% static 'files/excel.png' %}">
+                    {% endif %}
+                    {% if i.ext == "video" %}
+                        <img src="{% static 'files/video.png' %}">
+                    {% endif %}
+                    {% if i.ext == "word" %}
+                        <img src="{% static 'files/word.png' %}">
+                    {% endif %}
+                    {% if i.ext == "pdf" %}
+                        <img src="{% static 'files/pdf.png' %}">
+                    {% endif %}
+                    <div class="role_name">Name={{i.filename}}</div>
+                    <div class="real_name">File Size={{i.fsize}}</div>
+                    <div class="film">Description= {{i.description}}</div>
+                    <a class="download1" href="{{i.files.url}}" download="{{i.files}}">Download</a>
+                    <a class="another" href="delete\{{i.id}}">Delete</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <!--========== MAIN JS ==========-->
+    <script src="{% static 'files/main.js' %}"></script>
+</body>
+</html>

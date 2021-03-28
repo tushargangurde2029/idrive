@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    function phonenumber(inputtxt)
+    {
+      var phoneno = /^\d{10}$/;
+      if(inputtxt.value.match(phoneno))
+      {
+        var text1 = document.getElementById("email").value;
+    document.getElementById("temail").value = text1;
+          return true;
+      }
+      else
+      {
+        alert("Not a valid Phone Number");
+        return false;
+      }
+    }
+
+    function showAlert(){
+      alert("Enter the correct Data")
+    }
+  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/regstyle.css' %}" >
+     <!--========== BOX ICONS ==========-->  
+     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+     <!--========== CSS ==========-->
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>Register Yourself!</title>
+</head>
+{% if flag == "fail" %}
+<body onload="showAlert()">
+{% endif %}
+<body>
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+        <img class="responsive-img" style="width: 100px;" src="{% static 'files/logo.gif' %}" />
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="login" class="nav__link">Login</a></li>
+                <li class="nav__item"><a href="register" class="nav__link active-link">Register</a></li>
+                <li class="nav__item"><a href="contactus" class="nav__link">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-grid-alt'></i>
+        </div>
+    </nav>
+</header>
+</br>
+</br>
+</br>
+        <form method="POST" name="form1" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col-25">
+                  <label for="fname">Username</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="username" placeholder="Enter Username..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="fname">First Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="first_name" placeholder="Your name..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">Last Name</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="last_name" placeholder="Your last name..">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="email"></label>Email</label>
+                </div>
+                <div class="col-75">
+                  <input type="email" id="email"  name="email" placeholder="Enter the Email">
+                </div>
+              </div>
+              <input type="hidden" id="temail"  name="temail" >
+              <div class="row">
+                <div class="col-25">
+                  <label for="password1">Password</label>
+                </div>
+                <div class="col-75">
+                  <input type="password"  name="password1" placeholder="Enter the Password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="password2">Confirm Passowrd</label>
+                </div>
+                <div class="col-75">
+                  <input type="password"  name="password2" placeholder="Re-Enter the Password">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="mobile_number">Mobile Number</label>
+                </div>
+                <div class="col-75">
+                  <input type="text"  name="mobile_number" placeholder="Enter the Mobile Number">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="gender">Gender</label>
+                </div>
+                <div class="col-75">
+                  <select  name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                </div>
+              </div></br>
+              <div class="row">
+                <div class="col-25">
+                  <label for="mobile_number">Profile Picture</label>
+                </div>
+                <div class="col-75">
+                  <input type="file"  name="image" accept="image/*">
+                </div>
+              </div>
+              <div class="row">
+                <input type="submit" value="Register!" onclick="phonenumber(document.form1.mobile_number)">
+              </div>
+            </form>
+          </div>
+    </form>
+     <!--========== SCROLL REVEAL ==========-->
+     <script src="https://unpkg.com/scrollreveal"></script>
+
+     <!--========== MAIN JS ==========-->
+     <script src="{% static 'files/main.js' %}"></script>
+</body>
+</html>

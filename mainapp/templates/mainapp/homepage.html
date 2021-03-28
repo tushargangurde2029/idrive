@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!--========== BOX ICONS ==========-->  
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+        <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+        <title>Welcome to iDRIVE</title>
+    </head>
+    <body>
+        <!--========== SCROLL TOP ==========-->
+        <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-up-arrow-alt scrolltop__icon'></i>
+        </a>
+        
+        <!--========== HEADER ==========-->
+        <header class="l-header" id="header">
+            <nav class="nav bd-container">
+                <img class="responsive-img" style="width: 100px;" src="{% static 'files/logo.gif' %}" />
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="" class="nav__link active-link">Home</a></li>
+                        <li class="nav__item"><a href="login" class="nav__link">Login</a></li>
+                        <li class="nav__item"><a href="register" class="nav__link">Register</a></li>
+                        <li class="nav__item"><a href="contactus" class="nav__link">Contact Us</a></li>
+
+                        <li><i class='bx bx-toggle-left change-theme' id="theme-button"></i></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-grid-alt'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--========== HOME ==========-->
+            <section class="home" id="home">
+                <div class="home__container bd-container bd-grid">
+                    <div class="home__img">
+                        <img src="{% static 'files/hlogo.png' %}" alt="">
+                    </div>
+
+                    <div class="home__data">
+                        <h1 class="home__title">Upload your Multiple Files at iDrive</h1>
+                        <p class="home__description">The iDrive is the online cloud storage service providers in which you will get unlimited storage with iDrive.</p>
+                        <a href="login" class="button">Login</a>
+                        <a href="register" class="button">Register</a>
+                    </div>   
+                </div>
+            </section>
+
+            
+        <!--========== SCROLL REVEAL ==========-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--========== MAIN JS ==========-->
+        <script src="{% static 'files/main.js' %}"></script>
+    </body>
+</html>
